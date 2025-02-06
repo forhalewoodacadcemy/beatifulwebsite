@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+        h1 {
+            font-size: 36px;
+            color: #e0e0e0;
+        }
+        .bold-purple {
+            font-weight: bold;
+            color: #9b4dca;
+        }
+        p {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-top: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid #bbb;
+            background-color: #333;
+            color: white;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .button-container button:hover {
+            background-color: #555;
+            border-color: #9b4dca;
+        }
+        #game-container {
+            width: 100%;
+            height: 600px;
+            display: none;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+        }
+        #game-container h2 {
+            color: red;
+            background-color: black;
+            padding: 10px;
+            margin: 0;
+        }
+        .home-button-container {
+            margin-top: 10px;
+            background-color: black;
+            padding: 10px 0;
+        }
+        .home-button-container button {
+            padding: 9px 160px; /* Doubled the width again */
+            background-color: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .home-button-container button:hover {
+            background-color: #555;
+        }
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        #popup-content {
+            background-color: black;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+        #popup-content p {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        #popup-content p span {
+            color: red;
+        }
+        #popup button {
+            background-color: purple;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        #popup button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, this website is made by a student - <span class="bold-purple">Alexandru Blaga</span> - who runs "Computer Club" every lunch at Miss O'Neill's room.</h1>
+    <p>This website is made for educational purposes and is not to be used in classrooms during lessons.</p>
+
+    <div class="button-container">
+        <button onclick="startGame()">Drive Mad</button>
+        <button>Game 2</button>
+        <button>Game 3</button>
+        <button>Game 4</button>
+    </div>
+
+    <div id="game-container">
+        <div class="home-button-container">
+            <button onclick="goHome()">Home</button>
+        </div>
+
+        <h2>Drive Mad Game</h2>
+        <div id="game-placeholder"></div>
+    </div>
+
+    <div id="popup">
+        <div id="popup-content">
+            <p>If you have any <span>game recommendations</span> for this website, come at lunch to Miss O'neill's room and recommend the game to Alexandru Blaga.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function startGame() {
+            document.querySelector('h1').style.display = 'none';
+            document.querySelector('p').style.display = 'none';
+            document.querySelector('.button-container').style.display = 'none';
+            document.getElementById('game-container').style.display = 'block';
+            const gameContainer = document.getElementById('game-placeholder');
+            gameContainer.innerHTML = `<iframe src="https://bluepotato102.github.io/drive-mad/" width="100%" height="870" frameborder="0"></iframe>`;
+        }
+
+        function goHome() {
+            window.location.href = window.location.href;
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        window.onload = function() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
